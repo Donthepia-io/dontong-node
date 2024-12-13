@@ -53,8 +53,6 @@ services:
 $ docker-compose -f docker-compose-geth-new-account.yml up
 ```
 
-<img width="929" alt="스크린샷 2024-12-13 오전 10 28 08" src="https://github.com/user-attachments/assets/7579debc-abdb-4d1f-8e1a-86b8bff73424" />
-
 ### genesis.json 파일 복사
 
 node 디렉토리 안에서 파일 생성
@@ -116,12 +114,13 @@ services:
 $ docker-compose -f docker-compose-geth-init.yml up
 ```
 
-<img width="1040" alt="스크린샷 2024-12-13 오전 10 31 18" src="https://github.com/user-attachments/assets/bcc1595c-450e-492d-b3f8-acba167b97c3" />
-
 ### geth 실행 파일 생성
 
-EC2_IP = geth를 실행할 ec2의 ip
-VALIDATOR_ADDRESS = 생성한 검증자 계정 주소 (0x는 제거하고 입력)
+docker-compose.yml
+
+- EC2_IP = geth를 실행할 ec2의 ip
+
+- VALIDATOR_ADDRESS = 생성한 검증자 계정 주소 (0x는 제거하고 입력)
 
 ```yml
 version: '3.8'
