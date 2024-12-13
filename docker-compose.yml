@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  node:
+    image: ethereum/client-go:v1.13.11
+    container_name: node
+    command: --datadir="/root/.ethereum"
+      --syncmode="full"
+      --gcmode="archive"
+      --port=30303
+      --http
+      --http.addr="0.0.0.0"
+      --http.port=8501
+      --http.corsdomain="*"
+      --http.api="personal,miner,eth,net,txpool,debug,clique"
+      --http.vhosts="*"
+      --ws
+      --ws.addr="0.0.0.0"
+      --ws.port=8502
+      --ws.api="personal,miner,eth,net,txpool,debug,clique"
+      --networkid=8888
+      --nat="extip:[EC2_IP]"
+      --verbosity=5
+      --unlock="[VALIDATOR_ADDRESS]"
+      --password=/root/.ethereum/password
+      --miner.gasprice=0
+      --miner.etherbase="[VALIDATOR_ADDRESS]"
+      --allow-insecure-unlock
+      --nodiscover
+      --mine
+    volumes:
+      - ./node:/root/.ethereum:rw
+    ports:
+      - '30303:30303'
+      - '8501:8501'
+      - '8502:8502'
+    networks:
+      - poa-network
+      
+networks:
+  poa-network:
+    driver: bridge

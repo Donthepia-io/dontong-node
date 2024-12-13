@@ -1,0 +1,7 @@
+version: '3'
+services:
+  init:
+    image: ethereum/client-go
+    command: account new --password="/root/.ethereum/password"
+    volumes:
+      - ./node:/root/.ethereum
